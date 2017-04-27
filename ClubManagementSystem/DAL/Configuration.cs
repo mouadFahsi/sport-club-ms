@@ -81,6 +81,13 @@
             RoleAdmin.Authorizations.Add(UserAutorization);
 
 
+           //ChampionshipRanking
+
+            Authorization ChampionshipRankingAutorization = new Authorization();
+            CityAutorization.BusinessEntity = typeof(ChampionshipRanking).FullName;
+            RoleAdmin.Authorizations.Add(ChampionshipRankingAutorization);
+            //
+
             Authorization CityAutorization = new Authorization();
             CityAutorization.BusinessEntity = typeof(City).FullName;
             RoleAdmin.Authorizations.Add(CityAutorization);
@@ -89,6 +96,8 @@
             Authorization CountryAutorization = new Authorization();
             CountryAutorization.BusinessEntity = typeof(Country).FullName;
             RoleAdmin.Authorizations.Add(CountryAutorization);
+
+
 
             context.SaveChanges();
 
@@ -127,6 +136,27 @@
             GroupAgeAutorization.BusinessEntity = typeof(GroupAge).FullName;
             RoleAdmin.Authorizations.Add(GroupAgeAutorization);
             context.SaveChanges();
+
+
+
+
+            Authorization BeltAutorization = new Authorization();
+            BeltAutorization.BusinessEntity = typeof(Belt).FullName;
+            RoleAdmin.Authorizations.Add(BeltAutorization);
+
+
+            // Belt Data
+            context.Belts.AddOrUpdate(
+                           r => r.Reference
+                        ,
+            new Belt()
+            {
+                Description = "descA",
+                levelofThebelt = "levA",
+                NameofTheBelt = new LocalizedString() { English = "Name", French = "Nom" ,Arab= "إسم الخزام" },
+                //  Description = new LocalizedString() { English = "Description", French = "Description" },
+                //levelofThebelt = new LocalizedString() { English = "Name", French = "Nom" }
+            });
 
 
             Authorization EducationLevelAutorization = new Authorization();
